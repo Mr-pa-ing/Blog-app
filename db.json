@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "paingphyozaw",
+      "email": "paingphyozaw54@gmail.com",
+      "password": "password"
+    },
+    {
+      "username": "John",
+      "email": "John@email.com",
+      "password": "123456",
+      "id": 2
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "Title 1": "Body Content",
+      "body": "some comment",
+      "userId": 1
+    }
+  ]
+}
