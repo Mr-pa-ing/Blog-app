@@ -1,8 +1,7 @@
+import React, { useEffect, useState } from "react";
 import BaseLayout from "@/Layout/BaseLayout";
-import { axiosInstance } from "@/utils/axiosInstance";
-import { useMutation } from "@tanstack/react-query";
+import { useUser } from "@/hooks/useUser";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
 
 const SignUp = () => {
   const router = useRouter();
@@ -12,36 +11,25 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const createUser = async ({ username, email, password }) => {
-    try {
-      const res = await axiosInstance.post("/users", {
-        username,
-        email,
-        password,
-      });
-      return res.data;
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const { mutateAsync: createUserAsync } = useMutation({
-    mutationKey: ["post", "users"],
-    mutationFn: createUser,
-  });
+  const { useUserMutation } = useUser();
+  const { mutateAsync: createUser } = useUserMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createUserAsync({ username, email, password });
-    await router.push("/dashboard");
+    await createUser({ username, email, password });
+    await router.push("/auth/sign-in");
     setUsername("");
     setEmail("");
     setPassword("");
   };
 
+  useEffect(() => {
+    router.prefetch("/auth/sign-in");
+  }, [])
+
   return (
     <BaseLayout>
-      <div className="w-64 mx-auto mt-32">
+      <div className="w-80 mx-auto mt-32">
         <form method="POST" onSubmit={handleSubmit}>
           <div className="mb-6">
             <label

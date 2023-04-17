@@ -7,10 +7,16 @@
       "password": "password"
     },
     {
+      "email": "john@gmail.com",
+      "password": "$2a$10$hruKTA5jGsDmu1qKT5gyI.x3FeevA4x4jwp7HPRHHLSuC3vbWL93q",
       "username": "John",
-      "email": "John@email.com",
-      "password": "123456",
       "id": 2
+    },
+    {
+      "email": "paing@gmail.com",
+      "password": "$2a$10$GA2CPgkBMV0Pzi.aR/847uTw/E7z4QAb/aoIjQP61z7P7DuHHBn/C",
+      "username": "paing",
+      "id": 3
     }
   ],
   "posts": [
